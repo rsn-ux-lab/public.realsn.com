@@ -1,0 +1,44 @@
+/* CSS Document */
+@charset "UTF-8";
+
+
+
+/****************************************************************************
+    reset
+****************************************************************************/
+*,::before,::after {margin:0;padding:0;border:0 solid transparent;outline:0 solid transparent;box-shadow:0 0 0 transparent;font-family:inherit;text-shadow:0 0 0 transparent;box-sizing:border-box;background:transparent none center center no-repeat}
+h1,h2,h3,h4,h5,h6 {font-size:inherit;font-weight:inherit}
+i,em,address {font-style:inherit}
+u,s,ins,del {text-decoration:none}
+input[type=text]::-ms-clear{display:none}
+ol,ul {list-style:none}
+input, select, textarea, mark {color:inherit;font:inherit}
+label,button,a {color:inherit;font:inherit;cursor:pointer;text-decoration:inherit}
+table {table-layout:fixed;border-collapse:collapse}
+select::-ms-expand {display:none}
+input, select, button, textarea {-webkit-appearance:none;-moz-appearance:none;appearance:none}
+/* [type=checkbox],[type=radio] {display: none;} */
+img:only-child {margin:auto;display:block;max-width:100%}
+fieldset {min-width:0;max-width:100%}
+:focus{outline:0}
+textarea {resize:none}
+
+
+
+/****************************************************************************
+    hack
+****************************************************************************/
+_:-ms-fullscreen, :root button {overflow:visible} /* Only works in IE10 이상 (IE11도 포함)*/
+input::-webkit-input-placeholder {color:#a9a9a9;}
+input:-ms-input-placeholder {color:#a9a9a9;}
+textarea::-webkit-input-placeholder {color:#a9a9a9;}
+textarea:-ms-input-placeholder {color:#a9a9a9;}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {-webkit-text-fill-color: inherit !important; -webkit-box-shadow: 0 0 0 100vw #ffffff inset;} 

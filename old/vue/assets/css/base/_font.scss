@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+// Variables
+$font_family: '맑은 고딕', 'Malgun Gothic', '돋움', 'Dotum', 'AppleSDGothicNeo-Light', 'Sans-serif', 'Tahoma';
+
+// Style
+body{
+	font-family : $font_family;
+    font-size: 0.750em;
+    @include transition( 0 );
+}
+
+.ui_fs_1_2 {
+	font-size: 1.2em;
+}
+.ui_fs_1_4 {
+	font-size: 1.4em;
+}
+.ui_fs_1_6 {
+	font-size: 1.6em;
+}
+.ui_fs_11 {
+	font-size: 11px;
+}
+
+.ui_fw_n {
+	font-weight: normal;
+}
+.ui_fw_b {
+	font-weight: bold;
+}
+
+
+@media ( $mq_tablet ) {					// Tablet
+	body {
+        font-size: 0.750em;
+        @include transition( 0 );
+	}
+}

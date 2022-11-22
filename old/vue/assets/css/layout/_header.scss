@@ -1,0 +1,203 @@
+@charset "utf-8";
+
+/* Style */
+#wrap {
+    header {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 36px;
+        //@include transition( 0.2 );
+
+        > .wrap {
+            position: fixed;
+            width: 100%;
+            height: 36px;
+            min-width: 1400px;
+            background: #ffffff;
+            box-sizing: border-box;
+            z-index: 1;
+            @include transition( 0.2 );
+            @include shadow( 0, 3px, 3px, 0.05, 0, 0, 0 );
+            
+
+            > h1 {
+                height: 36px;
+                overflow: hidden;
+                color: #000;
+                font-size: 1.333em;
+                text-align: left;
+                line-height: 36px;
+
+                > a {
+                    @include inlineBlock();
+                    padding: 0 20px;
+                    line-height: 36px;
+                    vertical-align: top;
+
+                    > img {
+                        display: block;
+                    }
+                }
+            }
+
+            > .util {
+                position: absolute;
+                top: 8px;
+                right: 20px;
+
+                > ul {
+                    @include clearBoth();
+
+                    > li {
+                        float: left;
+                        position: relative;
+                        padding: 0 11px 0 10px;
+
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            top: 50%;
+                            right: 0;
+                            width: 1px;
+                            height: 16px;
+                            margin: -8px 0 0 0;
+                            background: #E2E2E2;
+                        }
+
+                        &:last-child {
+                            padding-right: 0;
+
+                            &:after {
+                                content: none;
+                            }
+                        }
+
+                        > * {
+                            display: block;
+                            line-height: 20px;
+                            @include transition();
+                        }
+                        > a {
+                            &:hover {
+                                color: $point_color;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            > .gnb {
+                position: fixed;
+                top: 56px;
+                left: 20px;
+                width: 180px;
+                max-height: calc( 100% - 56px );
+                border-radius: 4px;
+                background: #ffffff;
+                box-sizing: border-box;
+                overflow: auto;
+                @include shadow( 0, 3px, 3px, 0.05, 0, 0, 0 );
+                z-index: 10;
+
+                > ul {
+                    > li {
+                        border-bottom: 1px solid rgba( 0,0,0,0.1 );
+
+                        > div {
+                            > .item {
+                                display: block;
+                                position: relative;
+                                width: 100%;
+                                padding: 19px 12px;
+                                box-sizing: border-box;
+                                font-weight: bold;
+                                font-size: 16px;
+                                text-align: left;
+                                line-height: 22px;
+
+                                &.has-sub {
+                                    &:before, &:after {
+                                        content: '';
+                                        position: absolute !important;
+                                        top: 29px !important;
+                                        left: auto !important;
+                                        right: 15px !important;
+                                        width: 14px !important;
+                                        height: 2px !important;
+                                        background: #808080;
+                                        @include transition( 0.3 );
+                                    }
+
+                                    &:after {
+                                        top: 23px !important;
+                                        right: 21px !important;
+                                        width: 2px !important;
+                                        height: 14px !important;
+                                    }
+
+                                    &.is-expanded {
+                                        &:before {
+                                            @include rotate( 180 );
+                                        }
+                                        &:after {
+                                            @include rotate( 270 );
+                                        }
+                                    }
+                                }
+
+                                &.is-active {
+                                    background: linear-gradient(135deg, $gr_color_01 0%, $gr_color_02 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$gr_color_01, endColorstr=$gr_color_02, GradientType=1 ); /* IE6-9 */
+                                    color: #ffffff;
+
+                                    &:before, &:after {
+                                        background: #ffffff;
+                                    }
+                                }
+                            }
+                            > .sub {
+                                height: 0;
+                                overflow: hidden;
+
+                                > ul {
+                                    > li {
+                                        border-bottom: 1px solid #dadada;
+
+                                        &:first-child {
+                                            border-top: 1px solid #dadada;
+                                        }
+                                        &:last-child {
+                                            border-bottom: none;
+                                        }
+
+                                        > .item {
+                                            display: block;
+                                            padding: 12px;
+                                            background: #E8E8E8;
+                                            color: $font_color_dm;
+                                            font-size: 14px;
+                                            line-height: 18px;
+                                            @include transition();
+
+                                            &:hover {
+                                                background: #C9C9C9;
+                                                color: $font_color;
+                                            }
+
+                                            &.is-active {
+                                                background: #808080;
+                                                color: #ffffff;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+// Main
+@keyframes main_mv01_ani_03 {
+	from {
+		margin-left: 0;
+	}
+	to {
+		margin-left: -1061px;
+	}
+}
+@keyframes main_mv02_ani_01 {
+	from {
+		@include rotate( 0 );
+	}
+	to {
+		@include rotate( 360 );
+	}
+}
+@keyframes main_mv03_ani_01 {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: 0 -200px;
+	}
+}
+
+@keyframes bg_blink {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+// Technology
+@keyframes tech_tv_ani {
+	from {
+		background-position: center 0;
+	}
+	to {
+		background-position: center 15px;
+	}
+}
+
+
+

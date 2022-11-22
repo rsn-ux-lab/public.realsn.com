@@ -1,0 +1,1097 @@
+// UI - Date Picker
+.ui_datepicker {
+    @include inlineBlock();
+	position: relative;
+	padding: 0 0 0 0;
+	margin: -1px 0;
+	@include transition();
+
+	> .input_wrap {
+        margin: -1px 0 0 0;
+		@include clearBoth();
+
+		> .wrap {
+            float: left;
+            margin: 1px 0;
+			position: relative;
+
+			&:not(:last-child){
+				margin-right: 4px;
+			}
+
+			&.is-month-move {
+				padding: 0 32px;
+			}
+
+			> .date_result {
+				display: block;
+                position: relative;
+                width: auto;
+				padding: 0 10px;
+				border: 1px solid $component_brd_color;
+				border-radius: 4px;
+				box-sizing: border-box;
+				background: #ffffff;
+				font-size: 1.083em;
+				line-height: 28px;
+                text-align: center;
+				cursor: pointer;
+                outline: none;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+				@include transition();
+
+				&:hover {
+					border: 1px solid $component_brd_color_over;
+					z-index: 1;
+				}
+
+				&.is-active {
+					border: 1px solid $component_brd_color_active;
+					color: $component_font_color_active;
+					@include shadow( 0, 0, 0, 0, 0, 0, 0 );
+					z-index: 1;
+				}
+
+				&[disabled] {
+					border: 1px solid $component_brd_color_disabled;
+					background: $component_bg_color_disabled;
+					color: $component_font_color_disabled !important;
+					cursor: default;
+					@include shadow( 0, 0, 0, 0, 0, 0, 0 );
+				}
+			}
+
+			> .ui_btn {
+				position: absolute;
+				top: 0;
+
+				&.is-prev {
+					left: 0;
+					margin: 0;
+				}
+				&.is-next {
+					right: 0;
+					margin: 0;
+				}
+			}
+		}
+
+		> .date_grp {
+            float: left;
+            margin: 1px 0;
+			@include clearBoth();
+
+			> * {
+                float: left;
+                margin-left: -1px;
+
+                &:first-child {
+                    margin-left: 0;
+                    
+                    button {
+                        border-top-left-radius: 4px;
+                        border-bottom-left-radius: 4px;
+                    }
+                }
+                
+                &:last-child {
+                    button {
+                        border-top-right-radius: 4px;
+                        border-bottom-right-radius: 4px;
+                    }
+				}
+
+				button {
+					display: block;
+					position: relative;
+					padding: 6px 10px;
+					border: 1px solid $component_brd_color;
+					box-sizing: border-box;
+					background: #ffffff;
+					text-align: center;
+					line-height: 16px;
+					cursor: pointer;
+					@include transition();
+
+					&:not([disabled]):hover {
+						border: 1px solid $component_brd_color_over !important;
+						background: $component_bg_color_over;
+						z-index: 2;
+					}
+
+					&:not([disabled]):active, &:not([disabled]).is-active {
+						border: 1px solid $component_brd_color_active;
+						background: $component_bg_color_active;
+						color: #ffffff;
+						z-index: 1;
+					}
+
+					&[disabled] {
+						border: 1px solid $component_brd_color_disabled !important;
+						background: $component_bg_color_disabled !important;
+						color: $component_font_color_disabled !important;
+						cursor: default;
+					}
+				}
+			}
+		}
+    }
+    
+    > .mobile_bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba( 0, 0, 0, 0.5 );
+        z-index: 30;
+    }
+
+	> .calendars {
+		position: fixed;
+		margin: 1px 0 0 0;
+        border: 1px solid $component_brd_color;
+        background: #ffffff;
+		border-radius: 4px;
+		//overflow: hidden;
+		white-space: nowrap;
+		z-index: 11;
+		@include shadow( 0, 1px, 2px, 0.16, 0, 0, 0 );
+
+		&[data-fixed="true"] {
+			position: fixed !important;
+		}
+
+		.calendars_container {
+            display: table;
+            table-layout: fixed;
+			//background: #ffffff;
+
+			> .wrap {
+				display: table-row;
+                position: relative;
+                height: 100%;
+
+				input {
+					//display: none;
+				}
+				.dp_wrap {
+					display: table-cell;
+                    position: relative;
+                    height: 100%;
+					vertical-align: top;
+
+					.ui_calendar {
+						position: relative !important;
+						top: auto !important;
+						left: auto !important;
+                        margin: 0 !important;
+
+						@include shadow( 0,0,0 );
+					}
+				}
+				.ui-datepicker {
+					border: none;
+				}
+
+				> hr {
+                    display: table-cell;
+                    width: 1px;
+                    border: none;
+                    background: #E6E6E6;
+				}
+			}
+		}
+
+		> .btns {
+			position: relative;
+			padding: 10px;
+			background: #FBFBFB;
+			text-align: center;
+        }
+
+        .ui_tab {
+            display: none;
+        }
+    }
+    
+    @media ( $mq_mobile ) {					// Mobile
+        > .mobile_bg {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        > .calendars {
+            top: calc( 50% + 25px ) !important;
+            left: 50% !important;
+            transform: translateX(-50%) translateY(-50%);
+            max-height: calc( 100% - 84px ) !important;
+            margin: 0;
+            z-index: 30;
+
+            .calendars_container {
+                display: block;
+
+                > .wrap {
+                    display: block;
+                    // width: 280px !important;
+                    // @include clearBoth();
+                    //max-width: 100%;
+    
+                    .dp_wrap {
+                        display: none;
+                        height: auto !important;
+                        // float: left;
+                        // height: auto !important;
+
+                        &.is-active {
+                            display: block;
+                        }
+                    }
+    
+                    > hr {
+                        display: none;
+                        // position: relative;
+                        // width: 100%;
+                        // height: 1px;
+                    }
+                }
+            }
+
+            .ui_tab {
+                display: table;
+                //width: calc( 100% + 2px );
+                //margin: -1px -1px 0 -1px;
+
+                > ul {
+                    > li {
+                        height: 40px;
+                        padding-top: 0;
+                        padding-right: 0;
+            
+                        > input {
+                            &+ label {
+                                padding: 0;
+                                line-height: 40px;
+                                
+                                > span {
+                                    position: relative;
+                                    z-index: 1;
+                                }
+            
+                                &:after {
+                                    content: '';
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    z-index: 2;
+                                }
+                            }
+            
+                            &:checked + label {
+                                padding: 0;
+                                margin-top: 0;
+                                border-radius: none !important;
+                            }
+                        }
+            
+                        &:first-child {
+                            > input + label {
+                                border-radius: 4px 0 0 0;
+                            }
+                        }
+                        &:last-child {
+                            > input + label {
+                                border-radius: 0 4px 0 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+	// Calendar
+	.ui_calendar {
+		//display: none;
+		//position: fixed;
+		position: absolute;
+        width: 280px;
+        min-height: 100%;
+		margin: 2px 0 0 0;
+		border-radius: 4px;
+        background: #ffffff;
+        box-sizing: border-box;
+		z-index: 10;
+		@include shadow( 0, 0, 3px, 0.5, 0, 0, 0 );
+
+		> .date_wrap {
+			position: relative;
+			padding: 15px 10px 20px;
+			color: $component_font_color_active;
+
+			.date {
+				display: block;
+				color: $point_color;
+				font-size: 50px;
+				font-weight: bold;
+				line-height: 1;
+			}
+			.year_month {
+				position: absolute;
+				top: 20px;
+				right: 20px;
+				color: $component_font_color_active;
+				font-size: 20px;
+				font-weight: bold;
+				line-height: 1;
+			}
+			.day {
+				position: absolute;
+				bottom: 23px;
+				right: 20px;
+				color: $component_font_color_active;
+				font-size: 16px;
+				line-height: 1;
+			}
+			.time {
+				position: absolute;
+				top: 25px;
+				right: 20px;
+				padding: 15px 45px 0 0;
+				font-size: 23px;
+				font-weight: bold;
+				text-align: right;
+				line-height: 1;
+
+				&:before {
+					content: '시간';
+					position: absolute;
+					top: 2px;
+					right: 0;
+					color: $component_font_color_active;
+					font-size: 11px;
+					font-weight: normal;
+					line-height: 1;
+				}
+
+				.last_time {
+					position: absolute;
+					top: 20px;
+					right: 0;
+					color: $component_font_color_active;
+					font-size: 14px;
+					line-height: 1;
+				}
+			}
+		}
+		> .calendar_wrap {
+			background: #ffffff;
+		}
+		> .time_wrap {
+			width:100%;
+			position: absolute;
+			bottom: 0;
+			padding: 0 10px;
+			text-align:center;
+			border-top: 1px solid #F6F6F6;
+			background: #ffffff;
+			box-sizing:border-box;
+
+			// &:before {
+			// 	content: '시간설정';
+			// 	display: block;
+			// 	padding: 0 0 0 0;
+			// 	color: $component_font_color_active;
+			// 	font-size: 11px;
+			// 	font-weight: bold;
+			// 	line-height: 16px;
+			// }
+
+			> .wrap {
+				padding: 5px 0 0 0;
+				margin: 0 -2px;
+				color: #BCBCBC;
+
+				ul {
+					@include clearBoth();
+
+					li {
+						float: left;
+					}
+				}
+			}
+
+			input {
+				@include customComponent();
+
+				// & + label {
+				// 	display: block;
+				// 	width: 18px;
+				// 	height: 18px;
+				// 	//margin: 2px;
+				// 	border-radius: 5px;
+				// 	border: 1px solid #ffffff;
+				// 	box-sizing: border-box;
+				// 	cursor: pointer;
+				// 	line-height: 16px;
+				// 	text-align: center;
+				// 	@include transition();
+				// }
+
+				// &:hover + label {
+				// 	border: 1px solid $component_brd_color_over;
+                //     background: $component_bg_color_over;
+                //     color: $font_color;
+				// }
+
+				// &:checked + label {
+				// 	border: 1px solid $component_brd_color_active;
+                //     background: $component_bg_color_active;
+				// 	color: #ffffff;
+				// }
+			}
+		}
+		> .btns_grp {
+			position: absolute;
+			top: 85px;
+			width: 100%;
+			padding: 7px 10px;
+			box-sizing: border-box;
+			@include clearBoth();
+
+			.lc {
+				float: left;
+				@include clearBoth();
+
+				> * {
+					float: left;
+					margin-right: 2px;
+				}
+			}
+			.rc {
+				float: right;
+				@include clearBoth();
+
+				> * {
+					float: left;
+					margin-left: 2px;
+				}
+			}
+
+			> .btn {
+				position: absolute;
+				top: -1px;
+				width: 30px;
+				height: 30px;
+				padding: 7px 0;
+				border: 1px solid $component_brd_color;
+				box-sizing: border-box;
+				background: #ffffff;
+				@include transition();
+				@include shadow( 0, 1px, 0, 0.16, 0, 0, 0 );
+
+				path {
+					fill: $component_font_color;
+					@include transition();
+				}
+
+				&:hover {
+					border: 1px solid $point_color;
+					@include backgroundAlpha( $point_color, 0.1 );
+					z-index: 1;
+
+					path {
+						fill: $point_color;
+					}
+				}
+
+				&:active {
+					border: 1px solid $point_color;
+					background: $point_color;
+					@include shadow( 0, 0, 0, 0, 0, 0, 0 );
+					z-index: 1;
+
+					path {
+						fill: #ffffff;
+					}
+				}
+
+				&.is-prev-y {
+					left: 0;
+				}
+				&.is-prev-m {
+					left: 29px;
+				}
+				&.is-next-m {
+					right: 29px;
+				}
+				&.is-next-y {
+					right: 0;
+				}
+			}
+		}
+
+		&.is-time {
+			padding-bottom: 72px;
+        }
+        
+        @media ( $mq_mobile ) {					// Mobile
+            > .date_wrap {
+                display: none;
+            }
+
+            > .calendar_wrap {
+                height: 310px !important;
+            }
+
+            > .btns_grp {
+                top: 0;
+            }
+        }
+    }
+
+	// Jquery Datepicker
+	.ui-datepicker {
+		display: none;
+		overflow:hidden;
+		background: #fff;
+
+		.ui-datepicker-header {
+			position: relative;
+			height: 36px;
+			text-align: center;
+			background: #F8F8F8;
+
+			.ui-datepicker-title {
+				@include inlineBlock();
+				text-align: center;
+				line-height: 36px;
+				@include clearBoth();
+			}
+			.ui-datepicker-prev {
+				display: none;
+			}
+			.ui-datepicker-next {
+				display: none;
+			}
+			.ui-datepicker-month {
+				float: right;
+			}
+			.ui-datepicker-year {
+				float: right;
+				padding: 0 0 0 0;
+
+				&:after {
+					content: ".";
+				}
+			}
+		}
+		.ui-datepicker-calendar {
+			padding: 20px 14px;
+			overflow: hidden;
+
+			thead {
+				th {
+					padding: 0 0 3px 0;
+					color: #ABABAB;
+					font-weight: normal;
+					text-align: center !important;
+					line-height: 1;
+
+					&:first-child {
+						color: #E84646;
+					}
+				}
+			}
+			tbody {
+				td {
+					width: 30px;
+					height: 30px;
+					padding: 3px;
+					color: $font_color_dm;
+					font-size: 1em;
+					line-height: 1;
+					text-align: center;
+
+					&:first-child {
+						color: #E84646;
+					}
+
+					a.ui-state-default {
+						display: block;
+						width: 30px;
+						height: 30px;
+						margin: 0;
+						border: 1px solid #ffffff;
+						border-radius: 4px;
+						box-sizing: border-box;
+						line-height: 28px;
+						@include transition();
+
+						&.ui-state-hover {
+							border: 1px solid $component_brd_color_active;
+                            background: $component_bg_color_over;
+                            color: $font_color;
+						}
+						&:link, &:visited {
+							//color:#919191;
+						}
+						&.ui-state-active {
+							border: 1px solid $component_brd_color_active;
+							background: $component_bg_color_active;
+							color: #ffffff;
+						}
+					}
+					&.ui-state-disabled {
+                        color: #d0d0d0;
+					}
+				}
+			}
+		}
+	}
+
+	&.is-active {
+		> .input_wrap {
+			.input {
+				z-index: 2;
+
+				> .date_result {
+					border: 1px solid #C4C4C4;
+				}
+			}
+		}
+
+		> .calendars {
+			display: block;
+		}
+	}
+
+	&.is-time {
+		> .input_wrap {
+			> .wrap {
+				input {
+					width: 150px;
+				}
+			}
+		}
+	}
+
+	&.is-range {
+		> .input_wrap {
+			> .wrap {
+				.date_result {
+					//width: 180px;
+				}
+			}
+		}
+
+		&.is-time {
+			> .input_wrap {
+				> .wrap {
+					input {
+						width: 290px;
+					}
+				}
+			}
+		}
+	}
+
+	&.is-small {
+		> .input_wrap {
+			> .wrap {
+				&.is-month-move {
+					padding: 0 24px;
+				}
+
+				.date_result {
+                    height: 22px;
+                    padding: 0 6px;
+					line-height: 20px;
+				}
+            }
+            
+            > .date_grp {
+                button {
+                    padding: 2px 6px;
+                }
+            }
+		}
+	}
+
+	&.is-large {
+		> .input_wrap {
+			> .wrap {
+                &.is-month-move {
+					padding: 0 38px;
+                }
+                
+				.date_result {
+                    height: 36px;
+                    padding: 0 14px;
+                    font-size: 1.167em;
+					line-height: 34px;
+				}
+            }
+            
+            > .date_grp {
+                button {
+                    padding: 9px 14px;
+                }
+            }
+		}
+	}
+
+	&.is-xlarge {
+		> .input_wrap {
+			> .wrap {
+                &.is-month-move {
+					padding: 0 52px;
+                }
+                
+				.date_result {
+                    height: 50px;
+                    padding: 0 20px;
+                    font-size: 1.333em;
+					line-height: 48px;
+				}
+            }
+            
+            > .date_grp {
+                button {
+                    padding: 16px 20px;
+                }
+            }
+		}
+	}
+}
+
+// time picker
+.dcp_time_picker{
+	@include inlineBlock();
+    position: relative;
+    vertical-align: top;
+    
+	> .input_wrap {
+		@include clearBoth();
+
+		> .wrap {
+            float: left;
+            margin: 1px 0;
+			position: relative;
+
+			&:not(:last-child){
+				margin-right: 4px;
+			}
+
+			&.is-month-move {
+				padding: 0 32px;
+			}
+
+			> .date_result {
+				display: block;
+                position: relative;
+                min-width: 125px;
+				padding: 0 35px 0 10px;
+				border: 1px solid $component_brd_color;
+				border-radius: 4px;
+				background: #ffffff;
+				box-sizing: border-box;
+				font-size: 1.083em;
+				line-height: 28px;
+				text-align: left;
+				cursor: pointer;
+				outline: none;
+                @include transition();
+                
+                &:after {
+                    content: '\e011';
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+                    transform: translateY( -50% );
+                    width: 16px;
+                    height: 16px;
+                    font-family: 'icomoon';
+                    font-size: 16px;
+                    line-height: 1;
+                }
+
+				.colon{
+					margin:0 4px;
+				}
+
+				&:hover {
+					border: 1px solid $component_brd_color_over;
+					z-index: 1;
+				}
+
+				&.is-active {
+					border: 1px solid $component_brd_color_active;
+					color: $component_font_color_active;
+					@include shadow( 0, 0, 0, 0, 0, 0, 0 );
+					z-index: 1;
+				}
+
+				&[disabled] {
+					border: 1px solid $component_brd_color_disabled;
+					background: $component_bg_color_disabled;
+					color: $component_font_color_disabled !important;
+					cursor: default;
+					@include shadow( 0, 0, 0, 0, 0, 0, 0 );
+				}
+			}
+
+			> .ui_btn {
+				position: absolute;
+				top: 0;
+
+				&.is-prev {
+					left: 0;
+					margin: 0;
+				}
+				&.is-next {
+					right: 0;
+					margin: 0;
+				}
+			}
+		}
+	}
+	.time_box {
+        display: table;
+		position:fixed;
+		border:1px solid $component_brd_color;
+		border-radius:4px;
+        padding:15px;
+        margin: 1px 0 0 0;
+		background:#fff;
+        @include shadow( 0, 1px, 2px, 0.16, 0, 0, 0 );
+        z-index: 1;
+        
+		> .item {
+            display:table-cell;
+            position: relative;
+            padding: 0 15px 0 0;
+            vertical-align: top;
+            
+            > * {
+                position:relative;
+                border:1px solid $component_brd_color;
+                border-radius:4px;
+            }
+
+            &:not(:nth-last-child(1)):not(:nth-last-child(2)):after{
+				content:":";
+				position:absolute;
+				right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+				width: 13px;
+				height: 20px;
+				font-size:20px;
+				font-weight:bold;
+				text-align:center;
+				line-height:20px;
+				color: $font_color_dm;
+			}
+            
+            &:nth-last-child(2) {
+               padding-right: 10px;
+
+                &:after{
+                    content: none;
+                }
+            }
+
+            &:last-child {
+                padding-right: 0;
+            }
+		}
+		.ampm_box{
+			.bx{
+				width:36px;
+				height:20px;
+				border-bottom:1px solid $component_brd_color;
+				box-sizing:border-box;
+				margin:-1px;
+				&:last-child{
+					border-bottom:0;
+					> input[type=radio]{
+						& + label{
+							border-radius:0 0 4px 4px;
+						}
+					}
+				}
+				> input[type=radio] {
+					@include customComponent();
+		
+					& + label {
+						display:block;
+						width:36px;
+						height:20px;
+						box-sizing: border-box;
+						color: $component_font_color;
+						text-align: center;
+						line-height: 19px;
+						border-radius:4px 4px 0 0;
+						cursor: pointer;
+						@include transition();
+					}
+					&:checked + label{
+						background:$component_brd_color_active;
+						color:#fff;
+					}
+				}
+			}
+		}
+		.time_bx{
+			.wrap {
+				width:59px;
+				height:40px;
+                margin:-1px;
+                
+				.res{
+					float:left;
+					width:37px;
+					height:40px;
+					text-align:center;
+					line-height:38px;
+					font-size:20px;
+					font-weight:bold;
+					border-right:1px solid $component_brd_color;
+					input[type=text]{
+						width:100%;
+						border:0;
+						height:32px;
+						text-align:center;
+					}
+				}
+				.btn{
+					float:left;
+					input {
+						@include customComponent();
+		
+						& + label {
+							display: block;
+							width: 21px;
+							height: 20px;
+							box-sizing: border-box;
+							cursor: pointer;
+							line-height: 20px;
+							text-align: center;
+							@include transition();
+						}
+						&:hover + label{
+							background: $component_bg_color_active;
+							color: #fff;
+							border-radius:0 0 4px 0;
+						}
+					}
+					.up{
+						input {
+							& + label{
+								border-bottom:1px solid $component_brd_color;
+							}
+							&:hover + label {
+								border-radius:0 4px 0 0;	
+							}
+						}
+						
+					}
+				}
+			}
+		}
+		.no_use{
+            border: none;
+			
+			.wrap{
+                height: 40px;
+                
+				.res{
+					float:left;
+					//width:37px;
+					height:40px;
+					text-align:left;
+					line-height:38px;
+					font-size:20px;
+					color: $font_color_dm;
+                    font-weight:bold;
+				}
+			}
+		}
+    }
+    
+    &.box_mode{
+		float:none;
+		.input_wrap{
+			display:none;
+		}
+		.time_box{
+			position:relative;
+			border:0;
+			box-shadow: none;
+			border-radius:0;
+		}
+    }
+    
+    &.is-small {
+        > .input_wrap {
+            > .wrap {
+                > .date_result {
+                    min-width: 110px;
+                    padding: 0 25px 0 6px;
+                    line-height: 20px;
+                    
+                    &:after {
+                        right: 6px;
+                        width: 12px;
+                        height: 12px;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    &.is-large {
+        > .input_wrap {
+            > .wrap {
+                > .date_result {
+                    min-width: 145px;
+                    padding: 0 45px 0 14px;
+                    font-size: 1.167em;
+                    line-height: 34px;
+                    
+                    &:after {
+                        right: 14px;
+                        width: 20px;
+                        height: 20px;
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    &.is-xlarge {
+        > .input_wrap {
+            > .wrap {
+                > .date_result {
+                    min-width: 170px;
+                    padding: 0 51px 0 20px;
+                    font-size: 1.333em;
+                    line-height: 48px;
+                    
+                    &:after {
+                        right: 20px;
+                        width: 20px;
+                        height: 20px;
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

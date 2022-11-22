@@ -1,0 +1,159 @@
+@charset "utf-8";
+
+// Style
+.ui_treeview {
+	color: #999999;
+
+	ul {
+		li {
+			position: relative;
+			padding: 0 0 0 25px;
+
+			&.first_depth {
+				padding-left: 36px !important;
+
+				> .item {
+					padding-top: 5px !important;
+					padding-bottom: 5px !important;
+				}
+			}
+
+			&.last_depth {
+				padding-left: 24px;
+
+				/*
+				> .item {
+					padding-top: 1px !important;
+					padding-bottom: 1px !important;
+				}
+				*/
+			}
+
+			&.folder {
+				&:before {
+					content: '';
+					position: absolute;
+					top: 16px;
+					bottom: 5px;
+					width: 0;
+					border-left: 1px solid red;
+				}
+			}
+		}
+	}
+
+	> ul {
+		> li {
+			padding: 0;
+
+			> .item {
+				height: 26px;
+				padding-bottom: 5px;
+				line-height: 26px;
+			}
+		}
+	}
+
+	.item {
+		display: block;
+		position: relative;
+		padding: 3px 0 3px 16px;
+		@include clearBoth();
+
+		> * {
+			float: left;
+		}
+
+		> a {
+			@include clearBoth();
+
+			> * {
+				float: left;
+			}
+
+			&:hover {
+				.icon {
+					@include opacity( 1 );
+				}
+				.txt {
+					color: #666666;
+					font-weight: bold;
+					text-decoration: underline;
+				}
+			}
+		}
+
+		.btn_expanded {
+			//display: none;
+			position: absolute;
+			top: 5px;
+			left: 0;
+			width: 11px;
+			height: 11px;
+			border: 1px solid #999999;
+			background: #ffffff;
+			box-sizing: border-box;
+
+			&:before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 5px;
+				height: 1px;
+				margin: -1px 0 0 -3px;
+				background: #666666;
+			}
+		}
+
+		.icon {
+			width: 16px;
+			height: 16px;
+			text-indent: -9999px;
+			@include opacity( 0.8 );
+
+			&.home {
+				width: 26px;
+				height: 26px;
+				border-radius: 50%;
+				background-color: #e9e9e9
+			}
+		}
+
+		.txt {
+			padding: 0 0 0 10px;
+		}
+
+		.cnt {
+			padding: 0 0 0 3px;
+			@include opacity( 0.6 );
+		}
+
+		&.depth_1 {
+			.icon {
+				background: url(~static/img/ui/ui_treeview.png) no-repeat 0 0;
+			}
+		}
+		&.depth_2 {
+			.icon {
+				background: url(~static/img/ui/ui_treeview.png) no-repeat -26px 0;
+			}
+		}
+		&.depth_3 {
+			padding-top: 1px !important;
+			padding-bottom: 1px !important;
+
+			.icon {
+				width: 4px;
+				height: 4px;
+				margin: 6px 0 0;
+				border-radius: 50%;
+				background: #cccccc;
+			}
+		}
+	}
+
+	.sub {
+		padding-bottom: 5px;
+	}
+}

@@ -1,0 +1,97 @@
+@charset "utf-8";
+
+// 기본
+$point_color: #52beba;              // 포인트 색상
+$point_color_2: #FBD65B;            // 포인트 색상 2
+
+// 그라디언트 컬러
+$gr_color_01: #7487e5;
+$gr_color_02: #52beba;
+
+$body_bg_color: #F6F6F6;
+$over_bg_color: #f0f0f0;
+
+// 게시판
+$brd_color: #bcbcbc;		// 기본
+$brd_color_dm: #e4e4e4;		// 딤드
+$brd_color_hl: #767676;		// 강조
+
+// 기본 폰트
+$font_color: #666666;						// 컨텐츠 폰트 색상
+$font_color_dm: #999999;					// 컨텐츠 Dims 폰트 색상
+$font_color_hl: #333333;					// 컨텐츠 Highlight 폰트 색상
+
+// 감성
+$senti_positive_color: #78B4DC;
+$senti_negative_color: #E25B5B;
+$senti_neutral_color: #A5A5A5;
+
+
+
+// 컴포넌트
+$component_font_color: $font_color;				  // 컴포넌트 폰트 색상
+$component_font_color_hover: #484848;			// 컴포넌트 폰트 - Over
+$component_font_color_active: #484848;			// 컴포넌트 폰트 - Active
+$component_font_color_disabled: #AFAFAF;		// 컴포넌트 폰트 - Disabled
+$component_bg_color: #FFFFFF;					// 컴포넌트 배경
+$component_bg_color_over: #EFEFEF;              // 컴포넌트 배경 - Over
+$component_bg_color_active: #808080;            // 컴포넌트 배경 - Active
+$component_bg_color_disabled: #D9D9D9;			// 컴포넌트 배경 - Disabled
+$component_brd_color: #D4D4D4;					// 컴포넌트 보더
+$component_brd_color_over: #808080;			    // 컴포넌트 보더 - Over
+$component_brd_color_active: #6A6A6A;			// 컴포넌트 보더 - Active
+$component_brd_color_disabled: #C4C4C4;	    	// 컴포넌트 보더 - Disabled
+
+// 게시판
+$board_brd_color: #E6E6E6;
+$board_brd_color_hover: #CECECE;
+$board_brd_color_active: $point_color;
+
+$board_bg_color: #FCFCFC;
+$board_bg_color_hover: #F2F2F2;
+$board_bg_color_active: #DCF2F1;
+$board_th_bg_color: #F2F2F2;
+$board_th_bg_color_hover: #E4E4E4;
+$board_th_bg_color_active: #96D7D5;
+
+$board_bg_color_even: #fafafa;
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Style
+body{
+	background-color: $body_bg_color;
+	color: $font_color;
+}
+.ui_fc_dm {
+	color: $font_color_dm;
+}
+.ui_fc_hl {
+	color: $font_color_hl;
+}
+.ui_fc_point {
+	color: $point_color;
+}
+.ui_fc_highlight {
+	color: $point_color_2;
+}
+
+.ui_fc_positive {
+	color: $senti_positive_color;
+}
+.ui_fc_negative {
+	color: $senti_negative_color;
+}
+.ui_fc_neutral {
+	color: $senti_neutral_color;
+}

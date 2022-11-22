@@ -1,0 +1,242 @@
+@charset "utf-8";
+
+// Volume
+.tmpl_volume {
+
+	// 1번 템플릿
+	&.tmpl_01 {
+		.issue_wrap {
+			height: 170px;
+			padding: 41px 0 0;
+			box-sizing: border-box;
+			background: $point_color;
+			color: #ffffff;
+			text-align: center;
+			line-height: 1;
+
+			.title {
+				display: block;
+				font-size: 1.833em;
+				font-weight: normal;
+				line-height: 1;
+			}
+
+			.dv {
+				display: block;
+				padding: 20px 0 0 0;
+				font-size: 4.167em;
+				font-weight: bold;
+				line-height: 1;
+			}
+		}
+
+		.day_wrap {
+			height: 96px;
+			padding: 25px 0 0;
+			box-sizing: border-box;
+			text-align: center;
+			line-height: 1;
+
+			.title {
+				display: block;
+				font-weight: normal;
+				line-height: 1;
+			}
+			.dv {
+				display: block;
+				padding: 15px 0 0 0;
+				color: $point_color;
+				font-size: 1.667em;
+				font-weight: bold;
+				line-height: 1;
+			}
+		}
+	}
+
+	// 2번 템플릿
+	&.tmpl_02 {
+		.volume_wrap {
+			display: block;
+			padding: 20px 0 50px;
+			text-align: center;
+
+			h4 {
+				color: $font_color_hl;
+				line-height: 1;
+			}
+
+			.dv {
+				display: block;
+				padding: 30px 0 25px;
+				color: $font_color_hl;
+				font-size: 3.333em;
+				line-height: 1;
+			}
+
+			.ui_fluc {
+				font-size: 1.333em;
+				line-height: 1;
+			}
+		}
+
+		.graph_wrap {
+			padding: 0 10px 0;
+
+			.gages {
+				@include clearBoth();
+
+				> * {
+					float: left;
+					width: 50%;
+					height: 20px;
+					box-sizing: border-box;
+					color: #ffffff;
+					font-size: 0.917em;
+					text-align: center;
+					line-height: 20px;
+
+					&.press {
+						border-right: 1px solid #ffffff;
+						background: #555555;
+					}
+
+					&.social {
+						background: $point_color;
+					}
+				}
+			}
+
+			.info {
+				position: relative;
+				height: 28px;
+
+				&:before {
+					content: '';
+					position: absolute;
+					top: 8px;
+					left: 0;
+					width: 100%;
+					height: 1px;
+					background: #d9d9d9;
+				}
+
+				> * {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 34px;
+					margin: 0 0 0 -17px;
+					font-size: 11px;
+					text-align: center;
+
+					@for $Loop1 from 0 through 5 {
+						&:nth-child( #{$Loop1 + 1} ){
+							left: $Loop1 * 20%
+						}
+					}
+
+					&:before {
+						content: '';
+						position: absolute;
+						top: -7px;
+						left: 50%;
+						width: 1px;
+						height: 7px;
+						background: #d9d9d9;
+					}
+				}
+			}
+		}
+	}
+
+	// 3번 템플릿
+	&.tmpl_03 {
+		.ui_chart {
+			height: 220px;
+		}
+
+		.infos_wrap {
+			> h3, > h4, > h5 {
+				padding:20px 0 10px 0;
+				color: $font_color_hl;
+				text-align: center;
+				line-height: 1;
+			}
+
+			.dv {
+				display: block;
+				color: $font_color_hl;
+				font-size: 2.833em;
+				font-weight: bold;
+				text-align: center;
+				line-height: 1;
+				@include overUnderline( $font_color, $font_color, $font_color );
+			}
+
+			> .senti_infos {
+				padding: 40px 25px 20px;
+
+				> li {
+					display: block;
+					position: relative;
+					padding: 0 0 20px 70px;
+					line-height: 1;
+
+					&:last-child {
+						padding-bottom: 0;
+					}
+					&:nth-child(1) .senti:before {
+						background: $font_senti_postive;
+					}
+					&:nth-child(2) .senti:before {
+						background: $font_senti_negative;
+					}
+					&:nth-child(3) .senti:before {
+						background: $font_senti_neutral;
+					}
+
+					.senti {
+						position: absolute;
+						width: 40px;
+						left: 0;
+						padding: 0 0 0 15px;
+						color: #444444;
+						font-size: 0.917em;
+						font-weight: normal;
+
+						&:before {
+							content: '';
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 11px;
+							height: 11px;
+							border-radius: 6px;
+						}
+
+						&:after {
+							content: '';
+							position: absolute;
+							top: 0;
+							right: 0;
+							width: 1px;
+							height: 11px;
+							background: $brd_color_dm;
+						}
+					}
+
+					.dv {
+						font-size: 11px;
+						font-weight: normal;
+
+						&:after {
+							content: '건';
+							position: absolute;
+							right: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}

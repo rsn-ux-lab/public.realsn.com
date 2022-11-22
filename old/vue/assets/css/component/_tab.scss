@@ -1,0 +1,356 @@
+// Tab
+.ui_tab {
+	display: table;
+	position: relative;
+    width: 100%;
+    padding-bottom: 6px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-size: 1.333em;
+    overflow: auto;
+
+	> ul {
+		display: table-row;
+
+		> li {
+            display: table-cell;
+            height: 45px;
+            padding-top: 6px;
+            vertical-align: top;
+
+            &:not(:last-child) {
+                padding-right: 1px;
+            }
+
+			> input {
+				@include customComponent();
+
+				&+ label {
+					display: block;
+					position: relative;
+					padding: 15px 10px;
+					background: rgba( 128, 128, 128, 0.2 );
+					color: $font_color_dm;
+                    font-weight: bold;
+					line-height: 1;
+					text-align: center;
+                    overflow: hidden;
+                    cursor: pointer;
+                    @include transition();
+                    
+                    > span {
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        z-index: 2;
+                    }
+				}
+
+				&:hover + label, & + label:hover {
+					background: rgba( 128, 128, 128, 0.45 );
+					color: $font_color;
+				}
+
+				&:checked + label {
+                    padding: 18px 10px;
+                    margin-top: -6px;
+                    border-radius: 5px 5px 0 0 !important;
+					background: rgba( 128, 128, 128, 1 );
+                    color: #ffffff;
+                }
+                
+                &[disabled] + label {
+                    background: rgba( 128, 128, 128, 0.1 );
+                    cursor: default;
+
+                    .txt {
+                        color: $component_font_color_disabled;
+                        text-decoration: line-through;
+                    }
+                }
+			}
+
+			&:first-child {
+				> input + label {
+					border-radius: 4px 0 0 0;
+				}
+			}
+			&:last-child {
+				> input + label {
+					border-radius: 0 4px 0 0;
+				}
+			}
+		}
+    }
+
+    // 페이지 탭
+    &.is-page {
+        width: 100%;
+        padding: 6px 0 20px 0;
+        margin: 0 auto;
+        font-size: 1.667em;
+
+        > ul {
+            > li {
+                height: auto;
+                padding-top: 0;
+
+                > input {
+                    &+ label {
+                        padding: 20px 10px;
+                        overflow: visible;
+
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 0;
+                            background: linear-gradient(135deg, $gr_color_01 0%, $gr_color_02 100%);
+                            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#{$gr_color_01}, endColorstr=#{$gr_color_02}, GradientType=1 );
+                            @include transition();
+                        }
+                    }
+    
+                    &:hover + label {
+                        color: $font_color;
+                    }
+    
+                    &:checked + label {
+                        padding: 20px 10px;
+                        margin: 0;
+                        background: rgba( 128, 128, 128, 0 );
+                        color: $font_color;
+
+                        &:before {
+                            top: -6px;
+                            height: 6px;
+                        }
+                    }
+                }
+    
+                &:first-child {
+                    > input + label {
+                        border-radius: 0;
+                    }
+                }
+                &:last-child {
+                    > input + label {
+                        border-radius: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    // 박스 탭
+    &.is-box {
+        position: relative;
+        width: auto;
+        height: 30px;
+        margin: 0 0 -24px -20px;
+        transform: translateY(-12px);
+        padding: 0;
+        line-height: 30px;
+        z-index: 1;
+
+        > ul {
+            > li {
+                padding: 0 !important;
+                border-right: 1px solid #D6D6D6;
+
+                > input {
+                    &+ label {
+                        padding: 19px 30px;
+                        border-radius: 0;
+                        font-size: 18px;
+                        overflow: visible;
+                    }
+
+                    &:checked + label {
+                        padding: 22px 30px;
+                        background: #ffffff;
+                        color: $font_color_hl;
+                    }
+                }
+
+                &:first-child {
+                    label {
+                        border-radius: 4px 0 0 0;
+                    }
+                }
+            }
+        }
+    }
+
+    &.is-sidebox {
+        width: auto;
+        padding-bottom: 0;
+        margin: 0;
+        font-size: 1.167em;
+
+        > ul {
+            > li {
+                height: 40px;
+                padding-top: 0;
+    
+                &:not(:last-child) {
+                    padding-right: 1px;
+                }
+    
+                > input {
+                    &+ label {
+                        padding: 0 10px;
+                        border-radius: 5px 5px 0 0 !important;
+                        background: rgba( 128, 128, 128, 0.2 );
+                        color: $font_color_dm;
+                        font-weight: bold;
+                        line-height: 40px;
+                        text-align: center;
+                        overflow: hidden;
+                        cursor: pointer;
+                        @include transition();
+                        
+                        > span {
+                            position: relative;
+                            z-index: 1;
+                        }
+
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: linear-gradient(135deg, $gr_color_01 0%, $gr_color_02 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$gr_color_01, endColorstr=$gr_color_02, GradientType=1 ); /* IE6-9 */
+                            @include opacity( 0 );
+                            @include transition();
+                        }
+    
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            z-index: 2;
+                        }
+                    }
+    
+                    &:checked + label {
+                        padding: 0 10px;
+                        margin-top: 0;
+                        color: #ffffff;
+
+                        &:before {
+                            @include opacity( 1 );
+                        }
+                    }
+                    
+                    &[disabled] + label {
+                        background: rgba( 128, 128, 128, 0.1 );
+                        cursor: default;
+    
+                        .txt {
+                            color: $component_font_color_disabled;
+                            text-decoration: line-through;
+                        }
+                    }
+                }
+    
+                &:first-child {
+                    > input + label {
+                        border-radius: 4px 0 0 0;
+                    }
+                }
+                &:last-child {
+                    > input + label {
+                        border-radius: 0 4px 0 0;
+                    }
+                }
+            }
+        }
+    }
+
+    // Small 탭
+    &.is-small {
+        width: 100%;
+        margin: 0;
+        font-size: 1.167em;
+
+        > ul {
+            > li {
+                height: 36px;
+
+                > input {
+                    &+ label {
+                        padding: 11px 10px;
+                    }
+    
+                    &:checked + label {
+                        padding: 14px 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    // 게시판 탭
+    &.is-board {
+        width: auto;
+        padding: 0;
+        margin: 0;
+        font-size: 1.167em;
+
+        > ul {
+            > li {
+                height: 40px;
+
+                > input {
+                    &+ label {
+                        padding: 13px 20px;
+                    }
+    
+                    &:checked + label {
+                        padding: 16px 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    & + .ui_row > .wrap > .ui_col > .ui_box.is-2dp {
+        //padding-top: 0 !important;
+    }
+
+    & + .ui_tab_content {
+        //padding: 6px 0 0;
+    }
+}
+
+.ui_box {
+    > .boxtab {
+        display: block;
+        //height: 0;
+
+        /*
+        & + .content {
+            > *:first-child {
+                margin-top: 14px;
+            }
+        }
+        */
+    }
+}

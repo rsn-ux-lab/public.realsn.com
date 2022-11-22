@@ -1,0 +1,230 @@
+/*
+
+Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+
+*/
+
+.code_viewer {
+    display: block;
+    position: relative;
+    padding: 0 0 20px;
+    margin: -20px -20px 20px;
+    border-left: 1px solid #ededed;
+    border-right: 1px solid #ededed;
+    border-bottom: 1px solid #ededed;
+    background: #f8f8f8;
+}
+
+.code_viewer > .description {
+    padding: 20px;
+    color: #666666;
+    line-height: 20px;
+}
+.code_viewer > .description:before {
+    content: 'Description';
+    /* content: none; */
+    display: block;
+    padding: 0 0 8px 0;
+    color: #333333;
+    font-size: 12px;
+    font-weight: bold;
+}
+.code_viewer > .description strong {
+    color: #19aa92;
+}
+
+.code_viewer > .ref {
+    padding: 20px 15px;
+    margin: 0 20px;
+    border: 1px solid #e6e6e6;
+    border-bottom: none;
+    background: #ffffff;
+}
+.code_viewer > .ref > dl {
+    padding: 15px 0;
+    border-top: 1px dashed #e7e7e7;
+}
+.code_viewer > .ref > dl:first-child {
+    padding-top: 0;
+    border-top: none;
+}
+.code_viewer > .ref > dl:last-child {
+    padding-bottom: 0;
+}
+.code_viewer > .ref > dl:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.code_viewer > .ref > dl.nec > dt {
+    color: #e22511;
+    text-decoration: underline;
+}
+.code_viewer > .ref > dl.nec > dt:before {
+    color: #f58a7f;
+}
+
+
+.code_viewer > .ref > dl > dt {
+    display: block;
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16px;
+}
+.code_viewer > .ref > dl > dt:before {
+    content: '#';
+    display: inline-block;
+    padding: 0 3px 0 0;
+    color: #999999;
+    font-size: 16px;
+    vertical-align: top;
+    line-height: 18px;
+}
+
+.code_viewer > .ref > dl > dt > .type {
+    display: inline-block;
+    padding: 0 6px;
+    margin: 0 0 0 10px;
+    border-radius: 4px;
+    background: #eeeeee;
+    color: #986801;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 18px;
+}
+.code_viewer > .ref > dl > dt > .type:before {
+    content: "type : ";
+    color: #c0c0c0;
+}
+
+.code_viewer > .ref > dl > dt > .default {
+    display: inline-block;
+    padding: 0 6px;
+    margin: 0 0 0 5px;
+    border-radius: 4px;
+    background: #def7ff;
+    color: #666666;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 18px;
+}
+.code_viewer > .ref > dl > dt > .default:before {
+    content: "default : ";
+    color: #c0c0c0;
+}
+
+.code_viewer > .ref > dl > dd {
+    padding: 2px 0 0 13px;
+    color: #999999;
+    line-height: 16px;
+}
+.code_viewer > .ref > dl > dd:nth-child(2) {
+    padding-top: 5px;
+}
+.code_viewer > .ref > dl > dd:before {
+    content: '- ';
+}
+.code_viewer > .wrap {
+    position: relative;
+    margin: 0 20px;
+    border: 1px solid #e6e6e6;
+    border-top: none;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 25px 20px !important;
+  /* border-top: 1px solid #e0e0e0; */
+  background: #232323 !important;
+  font-family: '맑은 고딕', 'Malgun Gothic', '돋움', 'Dotum', 'AppleSDGothicNeo-Light', 'Sans-serif', 'Tahoma', 'icomoon'
+}
+
+
+
+/* Base color: saturation 0; */
+
+.hljs,
+.hljs-subst {
+  color: #444;
+}
+
+.hljs-comment {
+  color: #888888;
+}
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold;
+}
+
+
+/* User color: hue: 0 */
+
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #880000;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold;
+}
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #BC6060;
+}
+
+
+/* Language color: hue: 90; */
+
+.hljs-literal {
+  color: #78A960;
+}
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #397300;
+}
+
+
+/* Meta color: hue: 200 */
+
+.hljs-meta {
+  color: #1f7199;
+}
+
+.hljs-meta-string {
+  color: #4d99bf;
+}
+
+
+/* Misc effects */
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}

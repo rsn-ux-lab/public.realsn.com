@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+#aside {
+    width: 340px;
+    max-height: calc(100%-56px);
+    
+    .ui_side_box {
+        display: block;
+        position: relative;
+        margin-bottom: 40px;
+    
+        &:last-child {
+            margin-bottom: 0;
+        }
+    
+        > .header {
+            display: block;
+            padding: 0 10px;
+            border-radius: 4px 4px 0 0;
+            background: linear-gradient(135deg, $gr_color_01 0%, $gr_color_02 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$gr_color_01, endColorstr=$gr_color_02, GradientType=1 ); /* IE6-9 */
+            @include shadow( 0, 3px, 3px, 0.05, 0, 0, 0 );
+    
+            > h3 {
+                display: block;
+                color: #ffffff;
+                font-size: 1.167em;
+                line-height: 40px;
+            }
+        }
+    
+        > .ui_tab.is_aside_box_tab {
+            @include shadow( 0, 3px, 3px, 0.05, 0, 0, 0 );
+        }
+    
+        > .content {
+            padding: 20px;
+            border-radius: 0 0 4px 4px;
+            background: #FCFCFC;
+            @include shadow( 0, 3px, 3px, 0.05, 0, 0, 0 );
+        }
+    
+        > .disabled {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: calc( 100% - 40px );
+            background: rgba( 255,255,255,0.9 );
+            visibility: hidden;
+            @include opacity( 0 );
+            @include transition();
+    
+            .txt {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                width: 100%;
+                text-align: center;
+    
+                &:before {
+                    content: '\e045';
+                    display: block;
+                    padding: 0 0 10px 0;
+                    font-family: 'icomoon';
+                    font-size: 26px;
+                }
+            }
+        }
+    
+        &.is-disabled {
+            .disabled {
+                visibility: visible;
+                @include opacity( 1 );
+            }
+        }
+    }
+}

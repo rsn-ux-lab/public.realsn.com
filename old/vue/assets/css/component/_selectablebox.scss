@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+.ui_selectable_wrap {
+	border: 1px solid $component_brd_color;
+	background: #ffffff;
+	overflow: auto;
+	@include transition();
+
+	&:hover, &:focus {
+		border: 1px solid $point_color;
+	}
+
+	.ui_selectable {
+		color: #333333;
+		line-height: 20px;
+		outline: none;
+
+		li {
+			@include transition();
+
+			&:hover {
+				background: #e9e9e9;
+			}
+		}
+	}
+	.ui-widget-content {
+		> input[type=checkbox] {
+			@include customComponent();
+
+			&+ label {
+				display: block;
+				padding: 6px;
+				line-height: 1;
+			}
+		}
+	}
+	.ui-selecting {
+		background: #fabfc2;
+	}
+	.ui-selected {
+		background: #ed1b29 !important;
+		color: #ffffff;
+	}
+}
+.ui-selectable-helper{
+	position: absolute;
+	border: 1px dotted black;
+	z-index: 1;
+}

@@ -1,0 +1,341 @@
+@charset "utf-8";
+
+// 버튼 - 기본형
+.ui_btn {
+	@include inlineBlock();
+	position: relative;
+	//min-width: 80px;
+	height: 30px;
+    padding: 6px 10px;
+    border: 1px solid $component_brd_color;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: #ffffff;
+    color: $font_color;
+	text-align: center;
+    line-height: 16px;
+    vertical-align: top;
+	cursor: pointer;
+    outline: none;
+    @include transition( 0.2, 0, ( background-color, border-color, border-radius, color ) );
+
+	> * {
+        @include inlineBlock();
+        position: relative;
+        color: inherit;
+        vertical-align: top;
+    }
+    
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: #000000;
+        @include opacity( 0.03 );
+    }
+
+    &:hover {
+        border: 1px solid $component_brd_color_over;
+        background: $component_bg_color_over;
+        color: $font_color_hl;
+    }
+
+	&:not([disabled]):active, &:not([disabled]).is-active {
+        border-color: $component_brd_color_active;
+        background: $component_bg_color_active;
+        color: #ffffff !important;
+	}
+
+	&[disabled], &.is-disabled {
+		border: 1px solid $component_brd_color_disabled !important;
+		background: $component_bg_color_disabled !important;
+        color: $component_font_color_disabled !important;
+		cursor: default;
+        @include shadow( 0, 0, 0, 0, 0, 0, 0 );
+        
+        .txt {
+            text-decoration: line-through;
+        }
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+    }
+    
+    .icon {
+        font-family: 'icomoon';
+        color: inherit;
+        font-size: 16px;
+        line-height: 1;
+    }
+
+	/*
+	.icon {
+		@include inlineBlock();
+		width: 12px;
+		height: 14px;
+		background: url(~static/img/ui/ui_btns_icon.png) no-repeat 0 0;
+		@include textHidden();
+
+		// 아이콘이 앞인 경우
+		&.before {
+			margin:0 5px 0 0;
+		}
+		// 아이콘이 뒤인 경우
+		&.after {
+			margin:0 0 0 5px;
+		}
+
+		// 화살표 - 좌
+		&.arrow_l {
+			width: 8px;
+			background-position: -457px -24px;
+		}
+
+		// 화살표 - 우
+		&.arrow_r {
+			width: 8px;
+			background-position: -484px -24px;
+		}
+
+		// download
+		&.download {
+			width: 10px;
+			background-position: 0 -24px;
+		}
+
+		// 플러스
+		&.plus {
+			width: 12px;
+			background-position: -90px -24px;
+		}
+
+		// 삭제
+		&.delete {
+			width: 10px;
+			background-position: -241px -24px;
+		}
+
+		// 리셋
+		&.reset {
+			width: 14px;
+			background-position: -329px -24px;
+		}
+	}
+	*/
+	
+	// Loading
+	.in_loader {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 0;
+		height: 0;
+		border-radius: 7px;
+		background: url(http://design.realsn.com/design_asset/vue/assets/img/ui/ui_loader_01_small.gif) no-repeat center center;
+		text-align: left;
+		text-indent: -9999px;
+		visibility: hidden;
+		@include opacity( 0 );
+		@include transition();
+		@include shadow( 1px, 1px, 2px, 0.1 );
+	}
+	&.is-loading {
+		//border-color: $point_color;
+		//background: $point_color;
+
+		path {
+			fill: #ffffff !important;
+		}
+		
+		.in_loader {
+			top: -7px;
+			left: -4px;
+			width: 15px;
+			height: 15px;
+			visibility: visible;
+			@include opacity( 1 );
+		}
+	}
+
+	// 버튼 강조
+	&.is-color-hl {		// 기본 포인트 색상
+		border: 1px solid $point_color;
+		background: $point_color;
+		color: #ffffff;
+
+		&:hover {
+			border: 1px solid darken( $point_color, 18 );
+			background: darken( $point_color, 12 );
+			color: #ffffff;
+		}
+
+		&:active, &.is-active {
+			border: 1px solid darken( $point_color, 30 );
+			background: darken( $point_color, 20 );
+			color: #ffffff;
+			@include shadow( 0, 0, 0, 0, 0, 0, 0 );
+		}
+
+		&[disabled] {
+			border: 1px solid $component_brd_color_disabled;
+			background: $component_bg_color_disabled;
+			color: $component_font_color_disabled;
+			@include shadow( 0, 0, 0, 0, 0, 0, 0 );
+		}
+    }
+    
+    // 아이콘 With
+    &.is-icon-with {
+        height: 30px;
+        padding: 6px;
+        line-height: 16px;
+
+        &.is-before {
+            > .icon {
+                margin-right: 4px;
+            }
+        }
+
+        &.is-after {
+            > .icon {
+                margin-left: 4px;
+            }
+        }
+
+        > .icon {
+            width: 12px;
+            height: 16px;
+            font-size: 12px;
+            line-height: 16px;
+        }
+
+        &.is-active {
+			path {
+				fill: $point_color;
+			}
+		}
+    }
+
+	// 아이콘 Only
+	&.is-icon-only {
+		height: 30px;
+		padding: 6px;
+
+		> .icon {
+			width: 16px;
+			height: 16px;
+		}
+
+		&:hover {
+            /*
+			path {
+				fill: $point_color;
+            }
+            */
+		}
+		&.is-active {
+			path {
+				fill: $point_color;
+			}
+		}
+    }
+
+	// 사이즈
+	&.is-small {
+		height: 22px;
+		padding: 2px 6px;
+
+		&.is-icon-only {
+			height: 22px;
+			padding: 4px;
+
+			> .icon {
+				width: 12px;
+                height: 12px;
+                font-size: 12px;
+			}
+        }
+        
+        &.is-icon-with {
+            padding: 3px;
+
+            > .icon {
+				width: 14px;
+				height: 14px;
+            }
+            
+            > .txt {
+                line-height: 14px;
+            }
+
+            &.is-before {
+                > .icon {
+                    margin-right: 2px;
+                }
+            }
+    
+            &.is-after {
+                > .icon {
+                    margin-left: 2px;
+                }
+            }
+        }
+	}
+	&.is-large {
+		height: 36px;
+        padding: 9px 14px;
+        font-size: 1.167em;
+
+		&.is-icon-only {
+            padding: 7px;
+            
+            > .icon {
+				width: 20px;
+                height: 20px;
+                font-size: 20px;
+			}
+        }
+
+        // 아이콘 With
+        &.is-icon-with {
+            > .icon {
+                width: 14px;
+                height: 14px;
+                font-size: 14px;
+            }
+        }
+	}
+	&.is-xlarge {
+		height: 50px;
+        padding: 16px 20px;
+        font-size: 1.333em;
+
+		&.is-icon-only {
+            padding: 12px;
+            
+            > .icon {
+				width: 24px;
+                height: 24px;
+                font-size: 24px;
+			}
+        }
+        
+        // 아이콘 With
+        &.is-icon-with {
+            > .icon {
+                width: 16px;
+                height: 16px;
+                font-size: 16px;
+            }
+        }
+	}
+}

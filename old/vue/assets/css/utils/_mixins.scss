@@ -1,0 +1,244 @@
+@charset "utf-8";
+
+@mixin getPointColor( $attr, $style: "" ){
+	body.tmp_01 & {
+		#{$attr}: #{$style} red;
+	}
+	body.tmp_02 & {
+		#{$attr}: #{$style} blue;
+	}
+	body.tmp_03 & {
+		#{$attr}: #{$style} yellow;
+	}
+}
+
+// 전체 옵션 트랜지션( 시간 )
+@mixin transition( $time : 0.2, $delay : 0, $tgs : all, $easing : cubic-bezier(0.50, 0.000, 0.500, 1.000) ){
+	$delay: $delay + s;
+	$time: $time + s;
+	-webkit-transition-property: $tgs;
+	-webkit-transition-duration: $time;
+	-webkit-transition-delay: $delay;
+	-webkit-transition-timing-function: $easing;
+	transition-property: $tgs;
+	transition-duration: $time;
+	transition-delay: $delay;
+	transition-timing-function: $easing;
+}
+
+// Inline Block
+@mixin inlineBlock() {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+
+// Float Clear
+@mixin clearBoth(){					// Float Clear
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+// Custom Component
+@mixin customComponent(){
+	display: block;
+	position: absolute;
+	border: 0;
+	clip: rect(0 0 0 0);
+	width: 0;
+	height: 0;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	opacity: 0;
+	cursor: pointer;
+	z-index: 1;
+}
+
+// Text 영역 밖으로 보내서 숨김
+@mixin textHidden(){
+	text-align: left;
+	text-indent: -9999px;
+}
+
+// Opacity
+@mixin opacity( $opacity, $important:null ){
+	opacity: $opacity $important;
+	$opacity: $opacity * 100;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $opacity + ")";
+}
+
+// Border Alpha(RGBA)
+
+// Background Alpha(RGBA)
+@mixin backgroundAlpha( $color, $alpha, $important:null ){
+	$rgba: rgba($color, $alpha);
+	$ie-hex-str: ie-hex-str($rgba);
+	background-color: transparent $important;
+	background-color: $rgba $important;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+	zoom: 1;
+}
+
+// Rotate( 각도 )
+@mixin rotate( $deg ){					// Rotate
+	transform: rotate( #{$deg}deg );
+	-webkit-transform: rotate( #{$deg}deg );
+	-moz-transform: rotate( #{$deg}deg );
+	-o-transform: rotate( #{$deg}deg );
+	-ms-transform: rotate( #{$deg}deg );
+	filter:  progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($deg)}, M12=-#{sin($deg)}, M21=#{sin($deg)}, M22=#{cos($deg)});
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($deg)}, M12=-#{sin($deg)}, M21=#{sin($deg)}, M22=#{cos($deg)})";
+	zoom: 1;
+}
+
+// Text Over시 Underline( 언더라인 색상 )
+@mixin overUnderline( $color: #000000, $over_color: #000000, $active_color: #000000, $active : true ){
+	> * {
+		position: relative;
+
+		&:after {
+			content:'';
+			position: absolute;
+			bottom: -1px;
+			left: 50%;
+			right: 50%;
+			height: 0;
+			background: $color;
+
+			@include transition( .16 );
+		}
+	}
+
+	&:hover {
+		> *:after {
+			left: 0;
+			right: 0;
+			height: 1px;
+			background: $over_color;
+		}
+	}
+	
+	&.active {
+		> *:after {
+			@if( $active == true ) {
+				left: 0;
+				right: 0;
+				height: 1px;
+			}
+			background: $active_color;
+		}
+	}
+}
+
+// 컴포넌트 Visible Hidden
+@mixin uiComponentHidden(){
+	display: block;
+	position: absolute;
+	border: 0;
+	clip: rect(0 0 0 0);
+	width: 0;
+	height: 0;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+// 그림자( 크기, 투명도, RGB색상 R, RGB색상 G, RGB색상 B, Inner Shadow( "inset" ) )
+@mixin shadow( $posx : 0, $posy : 0, $blur : 1px, $opacity : 0.05, $color1 : 0, $color2 : 0, $color3 : 0, $inset : '', $important:null ){
+	@if $inset == '' {
+		-moz-box-shadow: $posx $posy $blur rgba($color1,$color2,$color3,$opacity) $important;
+		-webkit-box-shadow: $posx $posy $blur rgba($color1,$color2,$color3,$opacity) $important;
+		box-shadow: $posx $posy $blur rgba($color1,$color2,$color3,$opacity) $important;
+	}
+	@else {
+		-moz-box-shadow: $inset $posx $posy $blur rgba($color1,$color2,$color3,$opacity) $important;
+		-webkit-box-shadow: $inset $posx $posy $blur rgba($color1,$color2,$color3,$opacity) $important;
+		box-shadow: $posx $inset $posy $blur rgba($color1,$color2,$color3,$opacity) $important;
+	}
+}
+
+// 삼각형 아이콘
+/*	$direction : 방향
+	$color : 색상
+	$size1 : 가로 사이즈 (기본 사이즈로 한개의 사이즈 입력시, 가로 세로 사이즈 동일)
+	$size2 : 세로 사이즈
+*/
+@mixin triangle( $direction : "right", $color : #999 , $size1 : 5px, $size2: '' ){
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	width: 0;
+	height: 0;
+	border: none;
+
+	@if $direction == "right" {
+		@if $size2 == '' {
+			$size2: $size1 / 2;
+			border-top: $size2 solid transparent !important;
+			border-bottom: $size2 solid transparent !important;
+			border-left: $size1 solid $color;
+		}
+		@else {
+			$size2: $size2 / 2;
+			border-top: $size2 solid transparent !important;
+			border-bottom: $size2 solid transparent !important;
+			border-left: $size1 solid $color;
+		}
+	}
+	@else if $direction == "left"{
+		@if $size2 == '' {
+			$size2: $size1 / 2;
+			border-top: $size2 solid transparent !important;
+			border-bottom: $size2 solid transparent !important;
+			border-right: $size1 solid $color;
+		}
+		@else {
+			$size2: $size2 / 2;
+			border-top: $size2 solid transparent !important;
+			border-bottom: $size2 solid transparent !important;
+			border-right: $size1 solid $color;
+		}
+	}
+	@else if $direction == "top"{
+		@if $size2 == '' {
+			$size2: $size1 / 2;
+			border-left: $size2 solid transparent !important;
+			border-right: $size2 solid transparent !important;
+			border-bottom: $size1 solid $color;
+		}
+		@else {
+			$size1: $size1 / 2;
+			border-left: $size1 solid transparent !important;
+			border-right: $size1 solid transparent !important;
+			border-bottom: $size2 solid $color;
+		}
+	}
+	@else if $direction == "bottom"{
+		@if $size2 == '' {
+			$size2: $size1 / 2;
+			border-left: $size2 solid transparent !important;
+			border-right: $size2 solid transparent !important;
+			border-top: $size1 solid $color;
+		}
+		@else {
+			$size1: $size1 / 2;
+			border-left: $size1 solid transparent !important;
+			border-right: $size1 solid transparent !important;
+			border-top: $size2 solid $color;
+		}
+	}
+}
+
+// 블러
+@mixin blur( $radius ){
+	-webkit-filter: blur($radius+px); /* Chrome, Safari */
+	-ms-filter: blur($radius+px); /* IE12? */
+	//filter: url("data:image/svg+xml;utf8,<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"><filter id=\"blur\"><feGaussianBlur stdDeviation=\"#{$radius}\" /></filter></svg>#blur"); /* Firefox, Safari, Chrome*/
+	filter: progid:DXImageTransform.Microsoft.Blur(Strength=$radius); /* IE9 */
+}

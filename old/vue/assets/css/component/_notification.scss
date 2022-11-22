@@ -1,0 +1,62 @@
+@charset "utf-8";
+#notification {
+    > .wrap {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        height: 0;
+        z-index: 1;
+    }
+    
+    .item {
+        position: relative;
+        width: 450px;
+        min-height: 38px;
+        padding: 15px 15px 15px 68px;
+        margin: 0 0 3px 0;
+        border-radius: 5px;
+        box-sizing: border-box;
+        overflow: hidden;
+        color: #ffffff;
+        @include shadow( 0, 3px, 3px, 0.2, 0, 0, 0 );
+
+        > table {
+            > tbody {
+                > tr {
+                    > td {
+                        height: 38px;
+                    }
+                }
+            }
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            width: 38px;
+            height: 38px;
+            margin: -19px 0 0 0;
+            background-size: 100% 100%;
+        }
+
+        &.is-info {
+            background: linear-gradient(135deg, #A868D9 0%, #6253CE 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#A868D9, endColorstr=#6253CE, GradientType=1 ); /* IE6-9 */
+            
+            &:before {
+                background-image: url( 'data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzOCIgaGVpZ2h0PSIzOCIgdmlld0JveD0iMCAwIDM4IDM4Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTksMEExOSwxOSwwLDEsMCwzOCwxOSwxOS4wMTcsMTkuMDE3LDAsMCwwLDE5LDBabTAsMzZBMTcsMTcsMCwxLDEsMzYsMTksMTcuMDI0LDE3LjAyNCwwLDAsMSwxOSwzNloiLz48cmVjdCBmaWxsPSIjZmZmIiB3aWR0aD0iNCIgaGVpZ2h0PSIxMS42NyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTcgMTUuNzMpIi8+PGNpcmNsZSBmaWxsPSIjZmZmIiBjeD0iMiIgY3k9IjIiIHI9IjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3IDkuNzYpIi8+PC9zdmc+' );
+            }
+        }
+
+        &.is-complete {
+            background: linear-gradient(135deg, #1AB5AB 0%, #2386DE 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#1AB5AB, endColorstr=#2386DE, GradientType=1 ); /* IE6-9 */
+            
+            &:before {
+                background-image: url( 'data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzOCIgaGVpZ2h0PSIzOCIgdmlld0JveD0iMCAwIDM4IDM4Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTksMEExOSwxOSwwLDEsMCwzOCwxOSwxOS4wMTcsMTkuMDE3LDAsMCwwLDE5LDBabTAsMzZBMTcsMTcsMCwxLDEsMzYsMTksMTcuMDI0LDE3LjAyNCwwLDAsMSwxOSwzNloiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTcuMTMsMjAuOThsLTQuNDctNC40Nkw5Ljg0LDE5LjM1bDcuMjksNy4yOUwyOC4xNiwxNS42bC0yLjgyLTIuODNaIi8+PC9zdmc+' );
+            }
+        }
+    }
+}

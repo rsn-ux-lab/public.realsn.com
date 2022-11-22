@@ -1,0 +1,317 @@
+@charset "utf-8";
+
+.ui_elm_cloud {
+	position: relative;
+	text-align: center;
+
+	> .line_area {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height:100%;
+
+		> * {
+			background: #d1d1d1 !important;
+		}
+	}
+	
+	> .item {
+		position: absolute;
+		border: 1px solid #cbcbcb;
+		border-radius: 3px;
+		overflow: hidden;
+		border-radius: 3px;
+		background: #eeeeee;
+		@include opacity( 0 );
+
+		&.all {
+			color: #333333;
+
+			> * {
+				> strong {
+					display: block;
+					max-width: 120px;
+					padding: 8px 20px;
+					font-size: 1.250em;
+				}
+			}
+		}
+
+		&.postive {
+			border: 2px solid $font_senti_postive;
+		}
+		&.negative {
+			border: 2px solid $font_senti_negative
+		}
+		&.neutral {
+			border: 2px solid $font_senti_neutral;
+		}
+
+		> * {
+			display: block;
+			white-space: nowrap;
+
+			> strong {
+				display: block;
+				max-width: 60px;
+				padding: 8px 15px 2px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				text-align: center;
+				line-height: 1;
+			}
+
+			> span {
+				display: block;
+				padding: 0 5px 3px;
+				color: #767676;
+				font-size: 0.917em;
+				font-weight: normal;
+				text-align: center;
+				line-height: 1;
+			}
+
+			.dv {
+				@include inlineBlock();
+				max-width: 50px;
+			}
+
+			.gage {
+				display: block;
+				height: 6px;
+				margin: 3px 4px;
+				border-radius: 3px;
+				overflow: hidden;
+				white-space: nowrap;
+				@include clearBoth();
+
+				> * {
+					float: left;
+					height: 10px;
+					@include textHidden();
+
+					&:nth-child( 1 ) {
+						background: $font_senti_postive;
+					}
+					&:nth-child( 2 ) {
+						background: $font_senti_negative;
+					}
+					&:nth-child( 3 ) {
+						background: $font_senti_neutral;
+					}
+				}
+			}
+		}
+	}
+
+	&.small {
+		> .item {
+			> * {
+				> strong {
+					padding: 8px 15px;
+				}
+			}
+
+			&.all {
+				> * {
+					> strong {
+						padding: 15px;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+.ui_awsome_cloud {
+	> * {
+		//visibility: hidden;
+	}
+}
+.ui_word_cloud {
+	overflow: hidden;
+
+	* {
+		
+	}
+
+	&.clickOn {
+		.item {
+			padding: 5px !important;
+			font-family: $font_family !important;
+			//line-height: 1.4em !important;;
+			cursor: pointer;
+			white-space: nowrap;
+			@include transition( 0 );
+
+			&:hover {
+				background: $point_color !important;
+				color: #ffffff !important;
+				@include transition();
+			}
+			&.active {
+				background: $highlight_color !important;
+				color: #ffffff !important;
+			}
+		}
+	}
+
+	canvas {
+		z-index: 1 !important;
+	}
+}
+
+.cloud_info {
+	padding: 30px;
+	       
+	.rank {
+		display: block;
+		position: relative;
+		padding: 0 0 0 30px;
+		color: #000000;
+		font-size: 1.667em;
+		line-height: 1;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 0;
+			width: 20px;
+			height: 18px;
+			margin: -9px 0 0 0;
+			background: url(~static/img/ui/ui_bullets.png) no-repeat 0 -40px;
+		}
+	}
+
+	.tag_wrap {
+		display: table;
+		width: 100%;
+
+		p {
+			display: table-row;
+		}
+		.tag {
+			display: table-cell;
+			height: 188px;
+			color: $highlight_color;
+			font-size: 2.500em;
+			text-align: center;
+			vertical-align: middle;
+		}
+	}
+
+	.infos {
+		text-align: center;
+		@include clearBoth();
+
+		.insta {
+			float: left;
+			width: 50%;
+			padding: 10px 0;
+			border-right: 1px solid $brd_color_dm;
+			box-sizing: border-box;
+		}
+		.other {
+			float: right;
+			width: 50%;
+			padding: 10px 0;
+		}
+
+		.title {
+			display: block;
+			padding: 0 0 10px 0;
+			line-height: 1;
+		}
+		.dv {
+			display: block;
+			padding: 10px 0 0 0;
+			line-height: 1;
+		}
+	}
+}
+
+.ui_cloud_legend {
+	height: 28px;
+	padding:12px 0 0 0;
+
+	ul {
+		width: 100%;
+		@include clearBoth();
+
+		li {
+			float: left;
+			width: 10%;
+
+			.txt {
+				display: block;
+				position: relative;
+				padding: 0 0 13px 0;
+				color: #444444;
+				font-size: 10px;
+				text-align: right;
+				line-height: 1;
+				z-index: 0;
+				@include clearBoth();
+
+			}
+
+			.gage{
+				display: block;
+				position: relative;
+				height: 10px;
+				margin: -5px 0 0 0;
+				z-index: 1;
+			}
+
+			&:nth-child( 1 ) .gage {
+				background: #ff0000;
+			}
+			&:nth-child(2) .gage{
+				background: #fc7404;
+			}
+			&:nth-child(3) .gage{
+				background: #ffc000;
+			}
+			&:nth-child(4) .gage{
+				background: #b2e22c;
+			}
+			&:nth-child(5) .gage{
+				background: #00b050;
+			}
+			&:nth-child(6) .gage{
+				background: #0070c0;
+			}
+			&:nth-child(7) .gage{
+				background: #305496;
+			}
+			&:nth-child(8) .gage{
+				background: #7030a0;
+			}
+			&:nth-child(9) .gage{
+				background: #a6a6a6;
+			}
+			&:nth-child(10) .gage{
+				background: #d9d9d9;
+			}
+		}
+	}
+}
+
+
+.ui_3d_cloud {
+	min-height: 100px;
+
+	canvas {
+		display: block;
+		margin: 0 auto;
+	}
+
+	ul {
+		display: none;
+	}
+}

@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+.popup_container {
+	.popup_item {
+
+        // 관련 정보
+        &.popup_rel_info {
+            > .header, > .wrap, > .footer {
+                width: 90%;
+                max-width: 900px;
+            }
+
+            //width: 90%;
+            //max-width: 1000px;
+        }
+	}
+}

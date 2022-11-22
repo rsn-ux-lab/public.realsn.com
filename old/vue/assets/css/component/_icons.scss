@@ -1,0 +1,301 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?5de3pc');
+    src:  url('../fonts/icomoon.eot?5de3pc#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?5de3pc') format('truetype'),
+    url('../fonts/icomoon.woff?5de3pc') format('woff'),
+    url('../fonts/icomoon.svg?5de3pc#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.ui_ico_senti {
+    @include inlineBlock();
+    position: relative;
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    text-align: left;
+
+    > span {
+        display: block;
+        text-indent: -9999px;
+    }
+
+    &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 16px;
+        font-family: 'icomoon';
+    }
+
+    &.is-positive:before {
+        content: "\e012";
+        color: $senti_positive_color;
+    }
+    &.is-negative:before {
+        content: "\e013";
+        color: $senti_negative_color;
+    }
+    &.is-neutral:before {
+        content: "\e014";
+        color: $senti_neutral_color;
+    }
+}
+
+//이미지_없음
+.icon-no-image:before {
+    content: "\e048";
+}
+
+//게시판_이미지
+.icon-image-board:before {
+    content: "\e047";
+}
+
+//원문_보기
+.icon-original-text:before {
+    content: "\e046";
+}
+
+//데이터_없음
+.icon-no-data:before {
+    content: "\e045";
+}
+
+//자물쇠
+.icon-lock:before {
+    content: "\e044";
+}
+//삼각형_왼쪽
+.icon-caret-left:before {
+    content: "\e043";
+}
+
+//삼각형_오른쪽
+.icon-caret-right:before {
+    content: "\e042";
+}
+
+//삼각형_아래
+.icon-caret-down:before {
+    content: "\e041";
+}
+
+//삼각형_위
+.icon-caret-up:before {
+    content: "\e040";
+}
+
+//차트_버블
+.icon-chart-bubble:before {
+    content: "\e039";
+}
+
+//차트_칼럼차트_세로
+.icon-chart-column-height:before {
+    content: "\e038";
+}
+
+//차트_칼럼차트_세로_100%
+.icon-chart-column-height-100:before {
+    content: "\e037";
+}
+
+//차트_칼럼차트_가로
+.icon-chart-column-width:before {
+    content: "\e036";
+}
+
+//차트_칼럼차트_가로_100%
+.icon-chart-column-width-100:before {
+    content: "\e035";
+}
+
+//차트_라인
+.icon-chart-line:before {
+    content: "\e034";
+}
+
+//차트_워드클라우드
+.icon-chart-word-cloud:before {
+    content: "\e033";
+}
+
+//차트_도넛
+.icon-chart-donut:before {
+    content: "\e032";
+}
+
+//확인
+.icon-check:before {
+    content: "\e031";
+}
+
+//북마크
+.icon-bookmark:before {
+    content: "\e030";
+}
+
+//이메일
+.icon-email:before {
+    content: "\e029";
+}
+
+//미리보기
+.icon-preveal:before {
+    content: "\e028";
+}
+
+//수정
+.icon-modify:before {
+    content: "\e027";
+}
+
+//말풍선
+.icon-speech-bubble:before {
+    content: "\e026";
+}
+
+//게시판 일반
+.icon-normal-board:before {
+    content: "\e025";
+}
+
+//파일첨부
+.icon-add-file:before {
+    content: "\e024";
+}
+
+//유사
+.icon-analogy:before {
+    content: "\e023";
+}
+
+//삭제
+.icon-delet:before {
+    content: "\e022";
+}
+
+//뒤로가기
+.icon-back:before {
+    content: "\e021";
+}
+
+//새로고침_리로드
+.icon-reload:before {
+    content: "\e020";
+}
+
+//닫기
+.icon-close:before {
+    content: "\e019";
+}
+
+//제거
+.icon-remove:before {
+    content: "\e018";
+}
+
+//추가
+.icon-add:before {
+    content: "\e017";
+}
+
+//댓글_리플
+.icon-reply:before {
+    content: "\e016";
+}
+
+//인디케이터
+.icon-indicator:before {
+    content: "\e015";
+}
+
+//성향_중립
+.icon-neutral:before {
+    content: "\e014";
+}
+
+//성향_부정
+.icon-negative:before {
+    content: "\e013";
+}
+
+//성향_긍정
+.icon-positive:before {
+    content: "\e012";
+}
+
+//시계
+.icon-clock:before {
+    content: "\e011";
+}
+
+//앵글_위
+.icon-angle-up:before {
+    content: "\e010";
+}
+
+//앵글_아래
+.icon-angle-down:before {
+    content: "\e009";
+}
+
+//글쓰기_작성
+.icon-write:before {
+    content: "\e008";
+}
+
+//돋보기_검색
+.icon-search:before {
+    content: "\e007";
+}
+
+//도움말
+.icon-info:before {
+    content: "\e006";
+}
+
+//엑셀다운로드
+.icon-excel:before {
+    content: "\e005";
+}
+
+//체크박스
+.icon-checkbox:before {
+  content: "\e004";
+}
+//더블_앵글_화살표_왼쪽
+.icon-angle-double-left:before {
+    content: "\e003";
+}
+
+//더블_앵글_화살표_오른쪽
+.icon-angle-double-right:before {
+    content: "\e002";
+}
+
+//앵글_화살표_왼쪽
+.icon-angle-left:before {
+    content: "\e001";
+}
+//앵글_화살표_오른쪽
+.icon-angle-right:before {
+    content: "\e000";
+}

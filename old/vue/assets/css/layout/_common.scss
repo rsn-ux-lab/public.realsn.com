@@ -1,0 +1,168 @@
+@charset "utf-8";
+
+// Excel Process Container
+.excel_prc_container {
+	display: none;
+}
+
+// Content 공통
+#content {
+    padding: 20px 380px 0 220px;
+
+	&:only-child {
+        padding: 20px 20px 0 220px;
+    }
+
+	> h2 {
+		display: none;
+	}
+
+	> .wrap {
+		.top_searchs {
+            position: relative;
+            margin: 0 0 40px 0;
+            @include transition( 0.2, 0, margin );
+
+			> .wrap {
+                position: relative;
+                padding: 20px 20px 28px;
+                border-radius: 5px;
+                background: #ECECEC;
+                box-sizing: border-box;
+                @include transition( 0.2 );
+
+                > table {
+                    width: 100%;
+                    margin: -4px 0;
+                    table-layout: fixed;
+                    // border-spacing: 8px;
+
+                    > tbody {
+                        > tr {
+                            > th, > td {
+                                height: 30px;
+                                padding: 4px 0;
+                                line-height: 30px;
+                                text-align: left;
+                                vertical-align: top;
+                            }
+                            > th {
+                                padding-left: 12px;
+
+                                &:first-child {
+                                    padding-left: 0;
+                                }
+                            }
+                            > td {
+                                padding-right: 40px;
+
+                                > * {
+                                    vertical-align: top;
+                                }
+
+                                &:last-child {
+                                    padding-right: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                > .ui_btn {
+                    display: block;
+                    position: absolute;
+                    bottom: -18px;
+                    left: 50%;
+                    width: 160px;
+                    margin: 0 0 0 -80px;
+                    font-size: 1.167em;
+                }
+
+				> .inner_wrap {
+                    overflow: hidden;
+                    
+                    > .searchs {
+                        display: block;
+                        position: relative;
+                        padding: 0 20px;
+                        margin: 0 auto;
+                        box-sizing: border-box;
+                        overflow: hidden;
+    
+                        > h3 {
+                            padding: 15px 0 8px;
+                            font-size: 1.167em;
+                            font-weight: normal;
+                            line-height: 1;
+                        }
+    
+                        > .conditions_wrap {
+                            padding: 10px 0 0 0;
+                            @include clearBoth();
+    
+                            .condition {
+                                float: left;
+                                padding: 5px 30px 5px 0;
+    
+                                &.is-wid100p {
+                                    padding-right: 0;
+                                }
+    
+                                > * {
+                                    float: left;
+                                    margin: 2px 5px 2px 0;
+    
+                                    &:last-child {
+                                        margin-right: 0;
+                                    }
+                                }
+    
+                                > h4 {
+                                    float: none;
+                                    display: block;
+                                    padding: 0 0 3px;
+                                    margin: 0;
+                                    color: $font_color_dm;
+                                    font-weight: normal;
+                                }
+                                
+                                > table {
+                                    float: none;
+                                    width: 100%;
+                                }
+                            }
+                            
+                            > hr {
+                                float: none;
+                                display: block;
+                                width: 100%;
+                                border: none;
+                                background: transparent;
+                            }
+                        }
+    
+                        > .ui_btn {
+                            display: block;
+                            width: 160px;
+                            margin: 8px auto 15px;
+                            font-size: 1.167em;
+                        }
+                    }
+                }
+            }
+		}
+
+		> .contents {
+            position: relative;
+            // z-index: 0;
+		}
+    }
+    
+
+}
+
+#aside {
+    position: fixed;
+    top: 56px;
+    left: calc( 100% - 360px );
+}
